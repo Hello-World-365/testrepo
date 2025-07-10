@@ -1,1 +1,161 @@
+阅读：Git 命令
+在本阅读中，您将总结并描述在项目中可能使用的其他 Git 命令。您还将查看每个命令的语法。
 
+Git 是一种广泛使用的版本控制系统，为从事软件开发项目的开发人员和团队提供了众多好处。
+
+让我们来看一些有用的 Git 命令并理解它们：
+
+git add
+
+描述：将更改添加到暂存区。此命令将对文件所做的更改暂存，并为下一个提交做好准备。
+
+语法：
+
+**git add <filename.txt>**（添加特定文件）
+**git add .**（添加当前目录中新添加或更改的所有文件）
+git add -A（添加整个工作树中的所有更改，从存储库的根目录开始，无论您在目录结构中的位置）
+git reset
+
+描述：重置工作目录中的更改。当与 –hard HEAD 一起使用时，此命令会丢弃对工作目录和暂存区所做的所有更改，并将存储库重置为上一个提交（HEAD）。
+
+语法：
+
+git reset
+git reset –hard HEAD
+git branch
+
+描述：列出、创建或删除存储库中的分支。要删除分支，首先使用 git checkout 切换到该分支，然后运行命令以在本地删除该分支。
+
+语法：
+
+git branch（列出分支）
+**git branch <new-branch>**（创建新分支）
+**git branch -d <branch-name>**（删除分支）
+git checkout main
+
+描述：切换到“main”分支。这将把您当前的分支切换到“main”。
+
+语法：git checkout main
+
+git clone
+
+描述：从远程源复制一个存储库到您的本地机器。这将在您当前的工作目录中创建存储库的副本。
+
+语法：git clone <repository URL>
+
+git pull
+
+描述：从远程存储库获取更改并将其合并到您的本地分支中。首先，通过运行 git checkout 命令切换到您想要合并更改的分支。然后，运行 git pull 命令，该命令将从原始远程存储库的主分支获取更改并将其合并到您当前的分支中。
+
+语法：git pull origin main
+
+git push
+
+描述：将本地存储库内容上传到远程存储库。确保您在要推送的分支上，首先运行 git checkout 命令，然后将该分支推送到远程存储库。
+
+语法：git push origin <branch-name>
+
+git version
+
+描述：显示您系统上安装的当前 Git 版本。
+
+语法：git version
+
+git diff
+
+描述：显示提交之间、提交与工作树之间的更改等。它还比较分支。
+
+语法：
+
+git diff（显示工作目录与上一个提交之间的差异）
+git diff HEAD~1 HEAD（显示最后一次提交与倒数第二次提交之间的差异）
+**git diff <branch-1> <branch-2>**（比较指定的分支）
+git revert
+
+描述：通过应用新提交来撤销一个提交。这将创建一个新提交，撤销上一个提交所做的更改。
+
+语法：git revert HEAD
+
+git config –global user.email <Your GitHub Email>
+
+描述：为 Git 设置全局电子邮件配置。此命令需要在进行提交之前执行，以验证用户的电子邮件 ID。
+
+语法：git config –global user.email <Your GitHub Email>
+
+git config –global user.name <Your GitHub Username>
+
+描述：为 Git 设置全局用户名配置。此命令需要在进行提交之前执行，以验证用户的用户名。
+
+语法：git config –global user.name <Your GitHub Username>
+
+git remote
+
+描述：列出与您的本地存储库关联的所有远程存储库的名称。
+
+语法：git remote
+
+git remote -v
+
+描述：列出您的本地 Git 存储库连接的所有远程存储库及其相关的 URL。
+
+语法：git remote -v
+
+git remote add origin <URL>
+
+描述：添加一个名为“origin”的远程存储库，指定其 URL。
+
+语法：git remote add origin <URL>
+
+git remote rename
+
+描述：git remote rename 命令后跟您要重命名的远程存储库（origin）的名称和您要给它的新名称（upstream）。这将把“origin”远程存储库重命名为“upstream”。
+
+语法：git remote rename origin upstream
+
+git remote rm <name>
+
+描述：删除具有指定名称的远程存储库。
+
+语法：git remote rm origin
+
+git format-patch
+
+描述：生成用于电子邮件提交的补丁。这些补丁可用于通过电子邮件提交更改或与他人共享。
+
+语法：git format-patch HEAD~3（为最后三个提交创建补丁）
+
+git request-pull
+
+描述：生成待处理更改的摘要以供电子邮件请求。它有助于将分支或分叉中所做的更改传达给上游存储库维护者。
+
+语法：git request-pull origin/main <myfork or branch_name>
+
+git send-email
+
+描述：将一组补丁作为电子邮件发送。它允许您通过电子邮件将多个补丁文件发送给收件人。请确保使用 git config 命令设置电子邮件地址和姓名，以便电子邮件客户端在发送电子邮件时知道发件人的信息。
+
+语法：git send-email *.patch
+
+git am
+
+描述：将补丁应用到存储库。它将补丁文件作为输入，并将补丁文件中指定的更改应用到存储库。
+
+语法：git am <patchfile.patch>
+
+git daemon
+
+描述：通过 Git:// 协议公开存储库。Git 协议是一种轻量级协议，旨在实现 Git 客户端与服务器之间的高效通信。
+
+语法：git daemon –base-path=/path/to/repositories
+
+git instaweb
+
+描述：即时启动一个 Web 服务器以浏览存储库。它提供了一种简化的方式，通过 Web 界面查看存储库内容，而无需配置完整的 Web 服务器。
+
+语法：git instaweb –httpd=webrick
+
+git rerere
+
+描述：重用先前解决的合并冲突的记录解决方案。请注意，需要将 rerere.enabled 配置选项设置为“true”（git config –global rerere.enabled true），以使 git rerere 生效。此外，请注意，git rerere 仅适用于使用相同分支和提交解决的冲突。
+
+语法：git rerere
