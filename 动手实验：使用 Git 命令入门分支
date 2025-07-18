@@ -1,10 +1,33 @@
 动手实验：使用 Git 命令入门分支
 
-使用 git init 创建一个新的本地仓库
 
-使用 git add 创建并向仓库添加文件
+练习1：使用 git init 创建一个新的本地仓库
+1. 通过在终端中运行下面给出的 mkdir 命令来创建一个 myrepo 目录。
+  mkdir myrepo
+2. 通过运行以下命令进入 myrepo 目录。
+  cd myrepo
+3. 使用 git init 命令将 myrepo 目录初始化为一个 git 仓库
+  git init
+4. 现在本地 git 仓库已通过一个包含所有 git 文件的 .git 文件夹初始化，您可以通过在终端窗口中运行以下命令来验证。 . 前缀会使 git 目录隐藏。 -la 选项会生成一个长列表，包括访问权限、创建时间和隐藏 git 目录中所有文件的其他详细信息。
+  ls -la .git
 
-使用 git commit 提交修改
+
+练习2：使用 git add 创建并向仓库添加文件
+1. 现在使用以下 touch 命令创建一个名为 newfile 的空文件。
+  touch newfile
+2. 使用以下 git add 命令将此文件添加到仓库。
+  git add newfile
+
+
+练习3：使用 git commit 提交修改
+1. 在提交更改之前，您需要告诉 Git 您是谁。您可以使用以下命令来做到这一点。将 "you@example.com" 替换为您用于登录 GitHub 的电子邮件地址。将 Your Name 替换为您的名字。
+  请注意，电子邮件和名字必须用引号括起来。
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+2. 现在您可以使用以下 git commit 命令提交您的更改。
+  请注意，提交需要一个消息，您可以使用 -m 参数包含该消息。
+  git commit -m "added newfile"
+
 
 使用 git branch 创建分支
 
